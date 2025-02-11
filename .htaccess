@@ -1,4 +1,11 @@
+# Enable the rewrite engine
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
+# Check if the requested filename is not a regular file
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Rewrite URLs that do not contain a dot (.) to append .php
+# For example, /example will be rewritten to /example.php
+# [NC] - Case insensitive
+# [L] - Last rule to be processed
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
